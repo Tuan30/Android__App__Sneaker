@@ -1,4 +1,4 @@
-package nhom8.android_coding.sneaker_app;
+package nhom8.android_coding.sneaker_app.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +20,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import nhom8.android_coding.sneaker_app.R;
+import nhom8.android_coding.sneaker_app.adapter.LoaiSPadapter;
+import nhom8.android_coding.sneaker_app.model.LoaiSP;
+
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listViewHome;
     DrawerLayout drawerLayout;
+    LoaiSPadapter loaiSPadapter;
+    List<LoaiSP> mangloaisp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +82,11 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationview);
         listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
+
+        //Khoi tao list
+        mangloaisp = new ArrayList<>();
+        //Khoi tao adapter
+        loaiSPadapter = new LoaiSPadapter(getApplicationContext(),mangloaisp);
+        listViewHome.setAdapter(loaiSPadapter);
     }
 }

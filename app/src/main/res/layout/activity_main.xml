@@ -20,7 +20,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarhome"
                 app:title="Trang Chủ"
-                android:background="#ff00dfff"
+                android:background="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize">
             </androidx.appcompat.widget.Toolbar>
@@ -31,7 +31,7 @@
 
             </ViewFlipper>
             <LinearLayout
-                android:background="#5992d2"
+                android:background="#fff"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -48,12 +48,14 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="match_parent">
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
+        </LinearLayout>
             <com.google.android.material.navigation.NavigationView
-                android:layout_width="match_parent"
                 android:id="@+id/navigationview"
                 android:layout_gravity="start"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ListView
@@ -61,8 +63,6 @@
                     android:id="@+id/listviewhome"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.navigation.NavigationView>
-
-        </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 
 

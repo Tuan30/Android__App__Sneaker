@@ -57,9 +57,9 @@ public class LoaiSPadapter extends BaseAdapter {
             view.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) view.getTag();
-            viewHolder.texttensp.setText(array.get(i).getTensanpham());
-            Glide.with(context).load(array.get(i).getHinhanh()).into(viewHolder.imghinhanh);
         }
+        viewHolder.texttensp.setText(array.get(i).getTensanpham());
+        Glide.with(context).load(array.get(i).getHinhanh()).into(viewHolder.imghinhanh);
         return view;
     }
 }

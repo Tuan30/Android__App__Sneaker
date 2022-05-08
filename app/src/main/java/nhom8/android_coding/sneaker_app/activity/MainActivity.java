@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -33,7 +34,13 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import nhom8.android_coding.sneaker_app.R;
 import nhom8.android_coding.sneaker_app.adapter.LoaiSPadapter;
+//import nhom8.android_coding.sneaker_app.adapter.SPMoiadapter;
+import nhom8.android_coding.sneaker_app.adapter.SPMoiadapter;
 import nhom8.android_coding.sneaker_app.model.LoaiSP;
+//import nhom8.android_coding.sneaker_app.model.SPMoi;
+//import nhom8.android_coding.sneaker_app.model.SPMoiModel;
+import nhom8.android_coding.sneaker_app.model.SPMoi;
+import nhom8.android_coding.sneaker_app.model.SPMoiModel;
 import nhom8.android_coding.sneaker_app.retrofit.ApiBanHang;
 import nhom8.android_coding.sneaker_app.retrofit.RetrofitClient;
 import nhom8.android_coding.sneaker_app.utils.Utils;
@@ -50,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     List<LoaiSP> mangloaisp;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     ApiBanHang apiBanHang;
+    List<SPMoi> mangspMoi;
+    SPMoiadapter spMoiadapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +74,31 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_LONG).show();
             ActionViewFlipper();
             LoaiSanPham();
+//            SpMoi();
+            getSpMoi();
         }else{
             Toast.makeText(getApplicationContext(), "Không có internet, Vui lòng kết nối lại", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void getSpMoi() {
+        compositeDisposable.add(apiBanHang.getSPMoi()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        SPMoiModel -> {
+                            if (SPMoiModel.isSuccess()){
+                                mangspMoi = SPMoiModel.getResult();
+                                spMoiadapter = new SPMoiadapter(getApplicationContext(), mangspMoi);
+                                recyclerViewHome.setAdapter(spMoiadapter);
+                            }
+
+                        },
+                        throwable -> {
+                            Toast.makeText(getApplicationContext(), "Không kết nối được với server" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                )
+        );
     }
 
     private void LoaiSanPham() {
@@ -76,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(
                         loaiSPModel -> {
                             if(loaiSPModel.isSuccess()){
-                                Toast.makeText(getApplicationContext(), loaiSPModel.getResult().get(0).getTensanpham(), Toast.LENGTH_LONG).show();
+                                mangloaisp = loaiSPModel.getResult();
+                                loaiSPadapter = new LoaiSPadapter(getApplicationContext(),mangloaisp);
+                                listViewHome.setAdapter(loaiSPadapter);
                             }
                         }
                 )
@@ -118,15 +152,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarhome);
         viewFlipper = findViewById(R.id.viewflipper);
         recyclerViewHome = findViewById(R.id.recycleview);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this , 2);
+        recyclerViewHome.setLayoutManager(layoutManager);
+        recyclerViewHome.setHasFixedSize(true);
         navigationView = findViewById(R.id.navigationview);
         listViewHome = findViewById(R.id.listviewhome);
         drawerLayout = findViewById(R.id.drawerlayout);
 
         //Khoi tao list
         mangloaisp = new ArrayList<>();
-        //Khoi tao adapter
-        loaiSPadapter = new LoaiSPadapter(getApplicationContext(),mangloaisp);
-        listViewHome.setAdapter(loaiSPadapter);
+//        mangSpMoi = new ArrayList<>();
+        mangspMoi = new ArrayList<>();
     }
 
     private boolean isConnected (Context context) {
@@ -139,5 +175,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             return false;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.clear();
+        super.onDestroy();
     }
 }

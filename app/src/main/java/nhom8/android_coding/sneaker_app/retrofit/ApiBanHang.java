@@ -11,9 +11,6 @@ public interface ApiBanHang {
     @GET("loaisanpham.php")
     Observable<LoaiSPModel> LoaiSp();
 
-//    @GET("spmoi.php")
-//    Observable<SPMoiModel> SpMoi();
-
     @GET("spmoi.php")
     Observable<SPMoiModel> getSPMoi();
 }

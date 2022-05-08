@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityDiagnosticsManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -76,9 +78,28 @@ public class MainActivity extends AppCompatActivity {
             LoaiSanPham();
 //            SpMoi();
             getSpMoi();
+            EventClick();
         }else{
             Toast.makeText(getApplicationContext(), "Không có internet, Vui lòng kết nối lại", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void EventClick() {
+        listViewHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 1:
+                        Intent trangchu = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(trangchu);
+                        break;
+                    case 2:
+                        Intent allproduct = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        startActivity(allproduct);
+                        break;
+                }
+            }
+        });
     }
 
     private void getSpMoi() {

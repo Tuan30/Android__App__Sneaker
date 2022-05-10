@@ -95,7 +95,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         Intent allproduct = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        allproduct.putExtra("loai", 1);
                         startActivity(allproduct);
+                        break;
+                    case 3:
+                        Intent project = new Intent(getApplicationContext(), ProjectActivity3.class);
+                        startActivity(project);
                         break;
                 }
             }
@@ -142,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         List<String> mangquangcao = new ArrayList<>();
         mangquangcao.add("https://streetstyle.vn/images/promo/22/Street_Style_x13z-66.png");
         mangquangcao.add("https://streetstyle.vn/images/promo/22/Street_Style_mpyc-p4.png");
-        mangquangcao.add("https://streetstyle.vn/images/promo/23/Sale_Shopee_199k_web.jpg");
+        mangquangcao.add("https://streetstyle.vn/images/promo/23/Street_Style_hi%E1%BB%87n_ch%E1%BB%89_b%C3%A1n_ONLINE.png");
         for(int i = 0; i< mangquangcao.size(); i++){
             ImageView imageView = new ImageView(getApplicationContext());
             Glide.with(getApplicationContext()).load(mangquangcao.get(i)).into(imageView);
@@ -182,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Khoi tao list
         mangloaisp = new ArrayList<>();
-//        mangSpMoi = new ArrayList<>();
         mangspMoi = new ArrayList<>();
     }
 

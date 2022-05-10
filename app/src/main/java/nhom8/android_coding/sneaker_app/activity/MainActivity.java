@@ -94,13 +94,24 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(trangchu);
                         break;
                     case 2:
-                        Intent allproduct = new Intent(getApplicationContext(), AllProductActivity2.class);
-                        allproduct.putExtra("loai", 1);
-                        startActivity(allproduct);
+                        Intent ProductJD1L = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        ProductJD1L.putExtra("loai", 1);
+                        startActivity(ProductJD1L);
                         break;
                     case 3:
-                        Intent project = new Intent(getApplicationContext(), ProjectActivity3.class);
-                        startActivity(project);
+                        Intent ProductJD1H = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        ProductJD1H.putExtra("loai", 2);
+                        startActivity(ProductJD1H);
+                        break;
+                    case 4:
+                        Intent ProductSB = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        ProductSB.putExtra("loai", 3);
+                        startActivity(ProductSB);
+                        break;
+                    case 5:
+                        Intent ProductNB = new Intent(getApplicationContext(), AllProductActivity2.class);
+                        ProductNB.putExtra("loai", 4);
+                        startActivity(ProductNB);
                         break;
                 }
             }

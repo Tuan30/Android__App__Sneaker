@@ -1,6 +1,7 @@
 package nhom8.android_coding.sneaker_app.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,9 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import nhom8.android_coding.sneaker_app.InterFace.ItemClickListner;
 import nhom8.android_coding.sneaker_app.R;
+import nhom8.android_coding.sneaker_app.activity.ChiTietActivity;
 import nhom8.android_coding.sneaker_app.model.SPMoi;
 
 public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -58,12 +61,23 @@ public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (holder instanceof MyViewHolder){
             MyViewHolder myViewHolder = (MyViewHolder) holder;
             SPMoi sanPham = array.get(position);
-            myViewHolder.tensp.setText(sanPham.getTensp());
+            myViewHolder.tensp.setText(sanPham.getTensp().trim());
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
             myViewHolder.giasp.setText("Giá: " + decimalFormat.format(Double.parseDouble(sanPham.getGiasp())) + "đ");
             myViewHolder.mota.setText(sanPham.getMota());
-            myViewHolder.idsp.setText(sanPham.getId() + "");
+            myViewHolder.idsp.setText("ID: " + sanPham.getId() + "");
             Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.hinhanh);
+            myViewHolder.setItemClickListner(new ItemClickListner() {
+                @Override
+                public void onClick(View view, int pos, boolean isLongClick) {
+                    if (!isLongClick){
+                        //click
+                        Intent intent = new Intent(context, ChiTietActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    }
+                }
+            });
         }else {
             LoaddingViewHolder loaddingViewHolder = (LoaddingViewHolder) holder;
             loaddingViewHolder.progressBar.setIndeterminate(true);
@@ -80,9 +94,11 @@ public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return array.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tensp, giasp, mota, idsp;
         ImageView hinhanh;
+
+        private ItemClickListner itemClickListner;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +107,17 @@ public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             giasp = itemView.findViewById(R.id.itemproduct_gia);
             mota = itemView.findViewById(R.id.itemproduct_mota);
             hinhanh = itemView.findViewById(R.id.itemproduct_images);
+            itemView.setOnClickListener(this);
+        }
+
+        public void setItemClickListner(ItemClickListner itemClickListner) {
+            this.itemClickListner = itemClickListner;
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemClickListner.onClick(view, getAdapterPosition(), false);
+
         }
     }
 

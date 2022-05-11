@@ -1,12 +1,23 @@
 package nhom8.android_coding.sneaker_app.model;
 
-public class SPMoi {
+import java.io.Serializable;
+
+public class SPMoi implements Serializable {
     int id;
     String tensp;
     String giasp;
     String hinhanh;
     String mota;
+    String sizesp;
     int loai;
+
+    public String getSizesp() {
+        return sizesp;
+    }
+
+    public void setSizesp(String sizesp) {
+        this.sizesp = sizesp;
+    }
 
     public int getId() {
         return id;

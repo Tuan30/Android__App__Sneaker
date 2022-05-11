@@ -73,6 +73,7 @@ public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if (!isLongClick){
                         //click
                         Intent intent = new Intent(context, ChiTietActivity.class);
+                        intent.putExtra("chitiet", sanPham);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
                     }

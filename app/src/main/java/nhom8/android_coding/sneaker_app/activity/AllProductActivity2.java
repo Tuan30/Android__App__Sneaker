@@ -30,7 +30,7 @@ public class AllProductActivity2 extends AppCompatActivity {
     RecyclerView recyclerView;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-    int page = 1;
+    int page = 0;
     int loai;
     AllProductadapter adapterProducts;
     List<SPMoi> spMoiList;

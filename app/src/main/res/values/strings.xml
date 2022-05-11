@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sneaker_App</string>
+    <string name="g_a_25000">Gía: 25000</string>
+    <string name="th_m_v_o_gi_h_ng">Thêm vào giỏ hàng</string>
 </resources>

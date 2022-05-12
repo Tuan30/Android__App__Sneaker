@@ -5,7 +5,16 @@ public class GioHang {
     String tensp;
     long giasp;
     String hinhsp;
+    int sizesp;
     int soluong;
+
+    public int getSizesp() {
+        return sizesp;
+    }
+
+    public void setSizesp(int sizesp) {
+        this.sizesp = sizesp;
+    }
 
     public GioHang() {
     }

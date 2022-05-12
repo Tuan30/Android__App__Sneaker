@@ -8,14 +8,14 @@ public class SPMoi implements Serializable {
     String giasp;
     String hinhanh;
     String mota;
-    String sizesp;
+    int sizesp;
     int loai;
 
-    public String getSizesp() {
+    public int getSizesp() {
         return sizesp;
     }
 
-    public void setSizesp(String sizesp) {
+    public void setSizesp(int sizesp) {
         this.sizesp = sizesp;
     }
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.GioHangActivity">
     <TextView
-        android:id="@+id/txtgiohang"
+        android:id="@+id/txtgiohangtrong"
         android:text="Giỏ hàng trống"
         android:textSize="20dp"
         android:gravity="center"

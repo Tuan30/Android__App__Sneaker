@@ -6,6 +6,6 @@ import nhom8.android_coding.sneaker_app.model.GioHang;
 
 public class Utils {
 
-    public static final String BASE_URL = "http://192.168.1.18/Sneaker/";
+    public static final String BASE_URL = "http://192.168.1.7/Sneaker/";
     public static List<GioHang> manggiohang;
 }

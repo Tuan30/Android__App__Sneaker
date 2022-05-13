@@ -14,16 +14,10 @@
         android:theme="@style/Theme.Sneaker_App"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.GioHangActivity"
-            android:exported="false" />
+            android:name=".activity.DangkiActivity"
+            android:exported="true" />
         <activity
-            android:name=".activity.ChiTietActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.AllProductActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.DangNhapActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +26,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.AllProductHigh"
+            android:name=".activity.GioHangActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.ChiTietActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AllProductActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

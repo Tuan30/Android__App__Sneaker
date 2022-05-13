@@ -2,4 +2,6 @@
     <string name="app_name">Sneaker_App</string>
     <string name="g_a_25000">Gía: 25000</string>
     <string name="th_m_v_o_gi_h_ng">Thêm vào giỏ hàng</string>
+    <string name="ng_nh_p">Đăng nhập</string>
+    <string name="ng_k">Đăng Kí</string>
 </resources>

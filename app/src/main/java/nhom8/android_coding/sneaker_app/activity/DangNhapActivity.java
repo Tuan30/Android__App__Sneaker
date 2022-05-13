@@ -21,7 +21,7 @@ import nhom8.android_coding.sneaker_app.retrofit.RetrofitClient;
 import nhom8.android_coding.sneaker_app.utils.Utils;
 
 public class DangNhapActivity extends AppCompatActivity {
-    TextView txtdangki;
+    TextView txtdangki, txtresetpass;
     EditText email, pass;
     AppCompatButton btndangnhap;
     ApiBanHang apiBanHang;
@@ -41,6 +41,14 @@ public class DangNhapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DangkiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        txtresetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -84,6 +92,7 @@ public class DangNhapActivity extends AppCompatActivity {
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
         txtdangki = findViewById(R.id.txtdangki);
         email = findViewById(R.id.email);
+        txtresetpass = findViewById(R.id.txtresetpass);
         pass = findViewById(R.id.pass);
         btndangnhap = findViewById(R.id.btndangnhap);
 

@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Sneaker_App"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ResetPasswordActivity"
             android:exported="true" />
         <activity
@@ -39,7 +42,7 @@
             android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

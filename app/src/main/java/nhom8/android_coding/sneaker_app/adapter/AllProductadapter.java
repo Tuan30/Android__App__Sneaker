@@ -21,7 +21,6 @@ import java.util.List;
 
 import nhom8.android_coding.sneaker_app.InterFace.ItemClickListner;
 import nhom8.android_coding.sneaker_app.R;
-import nhom8.android_coding.sneaker_app.activity.ChiTietActivity;
 import nhom8.android_coding.sneaker_app.model.SPMoi;
 
 public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -67,18 +66,6 @@ public class AllProductadapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             myViewHolder.mota.setText(sanPham.getMota());
             myViewHolder.idsp.setText("ID: " + sanPham.getId() + "");
             Glide.with(context).load(sanPham.getHinhanh()).into(myViewHolder.hinhanh);
-            myViewHolder.setItemClickListner(new ItemClickListner() {
-                @Override
-                public void onClick(View view, int pos, boolean isLongClick) {
-                    if (!isLongClick){
-                        //click
-                        Intent intent = new Intent(context, ChiTietActivity.class);
-                        intent.putExtra("chitiet", sanPham);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
-                    }
-                }
-            });
         }else {
             LoaddingViewHolder loaddingViewHolder = (LoaddingViewHolder) holder;
             loaddingViewHolder.progressBar.setIndeterminate(true);

@@ -118,7 +118,7 @@ public class AllProductActivity2 extends AppCompatActivity {
                     }
                 },
                 throwable -> {
-                    Toast.makeText(getApplicationContext(), "Không kết nối được với server" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), throwable.getMessage() , Toast.LENGTH_LONG).show();
                 }
         ));
     }

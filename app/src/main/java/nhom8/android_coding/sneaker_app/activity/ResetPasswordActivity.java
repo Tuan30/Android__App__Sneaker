@@ -55,7 +55,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), userModel.getMessage(), Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
                                         startActivity(intent);
-                                        finish();
                                     }else{
                                         Toast.makeText(getApplicationContext(), userModel.getMessage(), Toast.LENGTH_SHORT).show();
                                     }

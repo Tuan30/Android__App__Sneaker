@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class GioHangActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Button btnmuahang;
     GioHangadapter gioHangadapter;
+    long tongtiensp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void totalTongTien() {
-        long tongtiensp = 0;
+        tongtiensp = 0;
         for (int i = 0; i < Utils.manggiohang.size(); i ++) {
             tongtiensp = tongtiensp + Utils.manggiohang.get(i).getGiasp() * Utils.manggiohang.get(i).getSoluong();
         }
@@ -52,7 +54,7 @@ public class GioHangActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });
@@ -65,9 +67,18 @@ public class GioHangActivity extends AppCompatActivity {
             gioHangadapter = new GioHangadapter(getApplicationContext(), Utils.manggiohang);
             recyclerView.setAdapter(gioHangadapter);
         }
+        btnmuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                intent.putExtra("tongtien", tongtiensp);
+                startActivity(intent);
+            }
+        });
     }
 
     private void Anhxa() {
+
         giohangtrong = findViewById(R.id.txtgiohangtrong);
         toolbar = findViewById(R.id.toobar);
         recyclerView = findViewById(R.id.recycleviewgiohang);

@@ -4,6 +4,10 @@ public class LoaiSP {
     int id;
     String tensanpham;
 
+    public LoaiSP(String tensanpham) {
+        this.tensanpham = tensanpham;
+    }
+
     public int getId() {
         return id;
     }

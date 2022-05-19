@@ -29,6 +29,7 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -37,11 +38,13 @@ import nhom8.android_coding.sneaker_app.R;
 import nhom8.android_coding.sneaker_app.adapter.LoaiSPadapter;
 //import nhom8.android_coding.sneaker_app.adapter.SPMoiadapter;
 import nhom8.android_coding.sneaker_app.adapter.SPMoiadapter;
+import nhom8.android_coding.sneaker_app.model.DonHang;
 import nhom8.android_coding.sneaker_app.model.LoaiSP;
 //import nhom8.android_coding.sneaker_app.model.SPMoi;
 //import nhom8.android_coding.sneaker_app.model.SPMoiModel;
 import nhom8.android_coding.sneaker_app.model.SPMoi;
 import nhom8.android_coding.sneaker_app.model.SPMoiModel;
+import nhom8.android_coding.sneaker_app.model.User;
 import nhom8.android_coding.sneaker_app.retrofit.ApiBanHang;
 import nhom8.android_coding.sneaker_app.retrofit.RetrofitClient;
 import nhom8.android_coding.sneaker_app.utils.Utils;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     SPMoiadapter spMoiadapter;
     NotificationBadge badge;
     FrameLayout frameLayout;
+    ImageView imgsearch;
 
 
     @Override
@@ -69,7 +73,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
-        
+        Paper.init(this);
+        if(Paper.book().read("user") != null){
+            User user = Paper.book().read("user");
+            Utils.user_current = user;
+        }else{
+
+        }
+
         anhxa();
         ActionBar();
         ActionViewFlipper();
@@ -90,29 +101,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
-                    case 1:
+                    case 6:
                         Intent trangchu = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(trangchu);
                         break;
-                    case 2:
-                        Intent ProductJD1L = new Intent(getApplicationContext(), AllProductActivity2.class);
-                        ProductJD1L.putExtra("loai", 1);
-                        startActivity(ProductJD1L);
+                    case 7: // Xem don hang
+                        Intent donhang = new Intent(getApplicationContext(), XemDonActivity.class);
+                        startActivity(donhang);
                         break;
-                    case 3:
-                        Intent ProductJD1H = new Intent(getApplicationContext(), AllProductActivity2.class);
-                        ProductJD1H.putExtra("loai", 2);
-                        startActivity(ProductJD1H);
-                        break;
-                    case 4:
-                        Intent ProductSB = new Intent(getApplicationContext(), AllProductActivity2.class);
-                        ProductSB.putExtra("loai", 3);
-                        startActivity(ProductSB);
-                        break;
-                    case 5:
-                        Intent ProductNB = new Intent(getApplicationContext(), AllProductActivity2.class);
-                        ProductNB.putExtra("loai", 4);
-                        startActivity(ProductNB);
+                    case 8:
+                        //xoa key user
+                        Paper.book().delete("user");
+
+                        Intent dangnhap = new Intent(getApplicationContext(), DangNhapActivity.class);
+                        startActivity(dangnhap);
+                        finish();
                         break;
                 }
             }
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         loaiSPModel -> {
                             if(loaiSPModel.isSuccess()){
                                 mangloaisp = loaiSPModel.getResult();
+                                mangloaisp.add(new LoaiSP("Đăng xuất"));
                                 loaiSPadapter = new LoaiSPadapter(getApplicationContext(),mangloaisp);
                                 listViewHome.setAdapter(loaiSPadapter);
                             }
@@ -198,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
         badge = findViewById(R.id.menu_sl);
         frameLayout = findViewById(R.id.framegiohang);
+        imgsearch = findViewById(R.id.imgsearch);
         //Khoi tao list
         mangloaisp = new ArrayList<>();
         mangspMoi = new ArrayList<>();
@@ -215,6 +220,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent giohang = new Intent(getApplicationContext(), GioHangActivity.class);
                 startActivity(giohang);
+            }
+        });
+
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
             }
         });
     }

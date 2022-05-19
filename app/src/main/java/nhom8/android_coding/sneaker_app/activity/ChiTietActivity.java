@@ -119,7 +119,6 @@ public class ChiTietActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override
@@ -157,7 +156,6 @@ public class ChiTietActivity extends AppCompatActivity {
             for(int i = 0; i < Utils.manggiohang.size(); i++){
                 totalItem = totalItem + Utils.manggiohang.get(i).getSoluong();
             }
-
             badge.setText(String.valueOf(totalItem));
         }
     }

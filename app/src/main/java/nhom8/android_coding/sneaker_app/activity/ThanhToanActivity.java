@@ -48,8 +48,8 @@ public class ThanhToanActivity extends AppCompatActivity {
 
     private void countItem() {
         totalItem = 0;
-        for(int i = 0; i < Utils.manggiohang.size(); i++){
-            totalItem = totalItem + Utils.manggiohang.get(i).getSoluong();
+        for(int i = 0; i < Utils.mangmuahang.size(); i++){
+            totalItem = totalItem + Utils.mangmuahang.get(i).getSoluong();
         }
     }
 
@@ -80,8 +80,8 @@ public class ThanhToanActivity extends AppCompatActivity {
                     String str_email = Utils.user_current.getEmail();
                     String str_sdt = Utils.user_current.getMobile();
                     int id = Utils.user_current.getId();
-                    Log.d("test", new Gson().toJson(Utils.manggiohang));
-                    compositeDisposable.add(apiBanHang.createOder(str_email, str_sdt, String.valueOf(tongtien), id, str_diachi, totalItem, new Gson().toJson(Utils.manggiohang))
+                    Log.d("test", new Gson().toJson(Utils.mangmuahang));
+                    compositeDisposable.add(apiBanHang.createOder(str_email, str_sdt, String.valueOf(tongtien), id, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(
@@ -89,6 +89,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Thanh cong", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
+                                        Utils.mangmuahang.clear();
                                         finish();
                                     },
                                     throwable -> {

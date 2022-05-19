@@ -2,6 +2,7 @@ package nhom8.android_coding.sneaker_app.retrofit;
 
 import io.reactivex.rxjava3.core.Observable;
 
+import nhom8.android_coding.sneaker_app.model.DonHangModel;
 import nhom8.android_coding.sneaker_app.model.LoaiSPModel;
 //import nhom8.android_coding.sneaker_app.model.SPMoiModel;
 import nhom8.android_coding.sneaker_app.model.SPMoiModel;
@@ -59,5 +60,17 @@ public interface ApiBanHang {
             @Field("diachi") String diachi,
             @Field("soluong") int soluong,
             @Field("chitiet") String chitet
+    );
+
+    @POST("xemdonhang.php")
+    @FormUrlEncoded
+    Observable<DonHangModel> xemDonHang(
+            @Field("iduser") int id
+    );
+
+    @POST("timkiem.php")
+    @FormUrlEncoded
+    Observable<SPMoiModel> search(
+            @Field("search") String search
     );
 }

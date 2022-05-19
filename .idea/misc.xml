@@ -6,20 +6,25 @@
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/drawable/background_button.xml" value="0.1" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/drawable/ic_add_24.xml" value="0.2205" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/drawable/spinner.xml" value="0.1" />
-        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_all_product2.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_all_product2.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_all_product_jd1_high.xml" value="0.213768115942029" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_chi_tiet.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_dang_nhap.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_dangki.xml" value="0.30402010050251255" />
-        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_gio_hang.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_gio_hang.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_reset_password.xml" value="0.18" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_search.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_thanh_toan.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/activity_xem_don.xml" value="0.3555253623188406" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_allproduct.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_giohang.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_chitiet.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_donhang.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_giohang.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_loadding.xml" value="0.18" />
-        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_sanpham.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_sp_moi.xml" value="0.2015625" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_sanpham.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Android__App__Sneaker/app/src/main/res/layout/item_sp_moi.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Sneaker_App/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Sneaker_App/app/src/main/res/layout/item_sanpham.xml" value="0.25" />
       </map>

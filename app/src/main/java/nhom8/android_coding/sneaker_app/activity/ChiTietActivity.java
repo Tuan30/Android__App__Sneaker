@@ -82,6 +82,7 @@ public class ChiTietActivity extends AppCompatActivity {
             long gia = Long.parseLong(spMoi.getGiasp()) * soluong;
             GioHang gioHang = new GioHang();
             gioHang.setGiasp(gia);
+            gioHang.setSoluong(soluong);
             gioHang.setSizesp(spMoi.getSizesp());
             gioHang.setIdsp(spMoi.getId());
             gioHang.setTensp(spMoi.getTensp());

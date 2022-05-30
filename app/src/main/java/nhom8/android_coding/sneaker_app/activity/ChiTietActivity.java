@@ -58,7 +58,7 @@ public class ChiTietActivity extends AppCompatActivity {
             int size = Integer.parseInt(spinnersize.getSelectedItem().toString());
             int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
             for (int i = 0 ; i < Utils.manggiohang.size() ; i++){
-                if(Utils.manggiohang.get(i).getIdsp() == spMoi.getId());{
+                if(Utils.manggiohang.get(i).getIdsp() == spMoi.getId()){
                     Utils.manggiohang.get(i).setSizesp(size + Utils.manggiohang.get(i).getSizesp());
                     Utils.manggiohang.get(i).setSoluong(soluong + Utils.manggiohang.get(i).getSoluong());
                     long gia = Long.parseLong(spMoi.getGiasp()) * Utils.manggiohang.get(i).getSoluong();
@@ -71,19 +71,21 @@ public class ChiTietActivity extends AppCompatActivity {
                 long gia = Long.parseLong(spMoi.getGiasp()) * soluong;
                 GioHang gioHang = new GioHang();
                 gioHang.setGiasp(gia);
-                gioHang.setSizesp(spMoi.getSizesp());
+                gioHang.setSoluong(soluong);
+                gioHang.setSizesp(size);
                 gioHang.setIdsp(spMoi.getId());
                 gioHang.setTensp(spMoi.getTensp());
                 gioHang.setHinhsp(spMoi.getHinhanh());
                 Utils.manggiohang.add(gioHang);
             }
         }else{
+            int size = Integer.parseInt(spinnersize.getSelectedItem().toString());
             int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
             long gia = Long.parseLong(spMoi.getGiasp()) * soluong;
             GioHang gioHang = new GioHang();
             gioHang.setGiasp(gia);
             gioHang.setSoluong(soluong);
-            gioHang.setSizesp(spMoi.getSizesp());
+            gioHang.setSizesp(size);
             gioHang.setIdsp(spMoi.getId());
             gioHang.setTensp(spMoi.getTensp());
             gioHang.setHinhsp(spMoi.getHinhanh());

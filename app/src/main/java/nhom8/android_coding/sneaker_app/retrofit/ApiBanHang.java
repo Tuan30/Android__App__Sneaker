@@ -5,6 +5,7 @@ import io.reactivex.rxjava3.core.Observable;
 import nhom8.android_coding.sneaker_app.model.DonHangModel;
 import nhom8.android_coding.sneaker_app.model.LoaiSPModel;
 //import nhom8.android_coding.sneaker_app.model.SPMoiModel;
+import nhom8.android_coding.sneaker_app.model.MessageModel;
 import nhom8.android_coding.sneaker_app.model.SPMoiModel;
 import nhom8.android_coding.sneaker_app.model.UserModel;
 import retrofit2.http.Field;
@@ -33,7 +34,8 @@ public interface ApiBanHang {
             @Field("email") String email,
             @Field("pass") String pass,
             @Field("username") String username,
-            @Field("mobile") String mobile
+            @Field("mobile") String mobile,
+            @Field("uid") String uid
     );
 
     @POST("dangnhap.php")
@@ -72,5 +74,12 @@ public interface ApiBanHang {
     @FormUrlEncoded
     Observable<SPMoiModel> search(
             @Field("search") String search
+    );
+
+    @POST("updatetoken.php")
+    @FormUrlEncoded
+    Observable<MessageModel> updateToken(
+            @Field("id") int id,
+            @Field("token") String token
     );
 }
